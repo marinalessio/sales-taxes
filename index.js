@@ -8,7 +8,7 @@ const BasketController = require('./src/controllers/Basket');
 const app = express();
 
 var allowedOrigins = ['http://localhost:3000',
-                      'http://yourapp.com'];
+                      'https://master.dbtsvsjj345j.amplifyapp.com/'];
 app.use(cors({
   origin: function(origin, callback){
     if(!origin) return callback(null, true);
