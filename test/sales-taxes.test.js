@@ -13,7 +13,7 @@ describe('Sales taxes API routes testing', function() {
             chai.request(app).get('/products')
                 .end(function(err, res) {
                     if (err) done(err);
-                    expect(res).to.have.status(200);
+                    expect(res.status).to.equal(200);
                     done();
                 });
         });
@@ -32,7 +32,7 @@ describe('Sales taxes API routes testing', function() {
                 })
                 .end(function(err, res) {
                     if (err) done(err);
-                    expect(res).to.have.status(201);
+                    expect(res.status).to.equal(201);
                     done();
                 });
         });
@@ -45,7 +45,7 @@ describe('Sales taxes API routes testing', function() {
                 .send("[11,12,13]")
                 .end(function(err, res) {
                     if (err) done(err);
-                    expect(res).to.have.status(201);
+                    expect(res.status).to.equal(201);
                     done();
                 });
         });
