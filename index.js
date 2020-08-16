@@ -8,7 +8,7 @@ const BasketController = require('./src/controllers/Basket');
 const app = express();
 
 var allowedOrigins = ['http://localhost:3000',
-                      'https://master.dbtsvsjj345j.amplifyapp.com/'];
+                      'https://sales-taxes-frontend.vercel.app'];
 app.use(cors({
   origin: function(origin, callback){
     if(!origin) return callback(null, true);
