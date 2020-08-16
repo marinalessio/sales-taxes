@@ -31,7 +31,7 @@ app.get("/products", (req, res) => {
     if (products) {
         res.status(200).send(products);
     } else {
-        res.status(500).send('Invalid request');
+        res.status(400).send('Invalid request');
     }
     
 });
@@ -39,13 +39,14 @@ app.get("/products", (req, res) => {
 app.post("/products", (req, res) => {
     
     if(req.body) {
-        if (ProductController.create(req.body)) {
-            res.status(200).send('Product created');
+        var prod = ProductController.create(req.body);
+        if (prod) {
+            res.status(201).send(prod);
         } else {
-            res.status(500).send('Invalid request');
+            res.status(400).send('Invalid request');
         }
     } else {
-        res.status(500).send('Invalid request');
+        res.status(400).send('Invalid request');
     }
 
 });
@@ -55,12 +56,14 @@ app.post("/bill", (req, res) => {
     if(req.body) {
         var basket = BasketController.calculate(req.body);
         if (basket) {
-            res.status(200).send(basket);
+            res.status(201).send(basket);
         } else {
-            res.status(500).send('Invalid request');
+            res.status(400).send('Invalid request');
         }
     } else {
-        res.status(500).send('Invalid request');
+        res.status(400).send('Invalid request');
     }
     
 });
+
+module.exports = app;

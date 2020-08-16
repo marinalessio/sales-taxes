@@ -8,7 +8,7 @@ function getAllProducts () {
 function create(product){
     var product = new Product(product);
     if (DB.write(product)) {
-        return true;
+        return product;
     }
     return false;
 }
