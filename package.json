@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "init-claudia": "claudia generate-serverless-express-proxy --express-module index",
+    "create-api": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-2",
+    "update-api": "claudia --update"
   },
   "author": "Alessio Marin",
   "license": "ISC",
   "dependencies": {
+    "aws-serverless-express": "^3.3.8",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -19,6 +23,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "claudia": "^5.12.0",
     "mocha": "^8.1.1",
     "supertest": "^4.0.2"
   }

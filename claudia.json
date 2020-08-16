@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "sales-tax-executor",
+    "name": "sales-tax",
+    "region": "us-east-2"
+  },
+  "api": {
+    "id": "pg9zsdx373"
+  }
+}
