@@ -1,18 +1,34 @@
 const fs = require('fs');
-const pathData = "./data/products.json";
+const pathData = "/tmp/products.json";
 
 function read () {
-    let products = fs.readFileSync(pathData);
-    let productsParsed = JSON.parse(products);
-    return productsParsed;
+    try {
+        if (fs.existsSync(pathData)) {
+            let products = fs.readFileSync(pathData);
+            let productsParsed = JSON.parse(products);
+            return productsParsed;
+        } else {
+            fs.writeFileSync(pathData, JSON.stringify([]));
+        }
+    } catch(err) {
+        console.error(err);
+        return [];
+    }
 }
 
 function write(product){
-    let products = fs.readFileSync(pathData);
-    let productsParsed = JSON.parse(products);
-    productsParsed.push(product);
-    fs.writeFileSync(pathData, JSON.stringify(productsParsed));
-    return true;
+    try {
+        if (fs.existsSync(pathData)) {
+            let products = fs.readFileSync(pathData);
+            let productsParsed = JSON.parse(products);
+            productsParsed.push(product);
+            fs.writeFileSync(pathData, JSON.stringify(productsParsed));
+            return true;
+        }
+    } catch(err) {
+        console.error(err);
+        return false;
+    }
 }
 
 var DbConnection = {
