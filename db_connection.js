@@ -1,5 +1,6 @@
 const fs = require('fs');
-const pathData = "/tmp/products.json";
+//const pathData = "/tmp/products.json";
+const pathData = "./data/products.json";
 
 function read () {
     try {
